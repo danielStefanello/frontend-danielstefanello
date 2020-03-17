@@ -1,45 +1,35 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import api from '../../services/api';
-import { List } from './styles';
+import { List, Link } from './styles';
 
-export default class Jobs extends Component {
-  state = {
-    jobs: [],
-  };
+export default function Jobs() {
+  const [jobs, setJobs] = useState([]);
 
-  async componentDidMount() {
-    const { jobs } = this.state;
+  useEffect(() => {
+    async function loadJobs() {
+      const response = await api.get('/jobs');
 
-    const response = await api.get('/jobs');
+      const { data } = response;
 
-    const data = {
-      id: response.data.id,
-      title: response.data.title,
-      description: response.data.description,
-    };
+      setJobs(data);
+    }
 
-    this.setState({
-      jobs: [...jobs, data],
-    });
+    loadJobs();
+  }, []);
 
-    console.log(data);
-  }
-
-  render() {
-    const { jobs } = this.state;
-
-    return (
-      <List>
-        {jobs.map(job => (
-          <li key={String(job.id)}>
-            <h2>
-              {job.id} - {job.login}
-            </h2>
-            <p>{job.login}</p>
-          </li>
-        ))}
-      </List>
-    );
-  }
+  return (
+    <List>
+      {jobs.map(job => (
+        <li
+          key={job.id}
+          style={{
+            backgroundImage: `url(http://localhost:3333/files/${job.images[0].path})`,
+          }}
+        >
+          <Link to="">{job.title}</Link>
+        </li>
+      ))}
+    </List>
+  );
 }
