@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
   display: grid;
-  grid-template-rows: 50px 1fr 60px;
   align-self: center;
   justify-content: space-around;
 `;
@@ -30,35 +28,29 @@ export const Menu = styled.ul`
   }
 `;
 
-export const Logo = styled.div`
+export const Profile = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  padding: 10px;
+  max-width: 700px;
 
   img {
-    box-sizing: border-box;
-    width: 80%;
-    padding: 10px;
-    margin: 0 auto;
+    margin-top: 50px;
+    width: 180px;
+    border: 7px solid #999;
+    border-radius: 50%;
   }
-`;
 
-export const Footer = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
+  span {
+    height: 7px;
+    background-color: #999;
+    width: 100%;
+    margin-top: 25px;
+  }
 
-  li {
-    a {
-      img {
-        border-radius: 5px;
-        opacity: 0.5;
-
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
+  p {
+    padding: 10px;
+    text-align: justify;
   }
 `;

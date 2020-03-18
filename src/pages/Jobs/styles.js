@@ -10,21 +10,36 @@ export const List = styled.ul`
     height: 250px;
     background-size: cover;
     background-position: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      font-size: 24px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #000;
+
+      &:hover {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+    }
   }
 `;
 
-export const Link = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
+export const GoBack = styled.div`
   font-size: 24px;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 1;
-    background-color: rgba(255, 255, 255, 0.8);
+  height: 40px;
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
   }
 `;

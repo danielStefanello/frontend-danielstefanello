@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
-import { List, Link } from './styles';
+import { List, GoBack } from './styles';
 
 export default function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -19,17 +20,22 @@ export default function Jobs() {
   }, []);
 
   return (
-    <List>
-      {jobs.map(job => (
-        <li
-          key={job.id}
-          style={{
-            backgroundImage: `url(http://localhost:3333/files/${job.images[0].path})`,
-          }}
-        >
-          <Link to="">{job.title}</Link>
-        </li>
-      ))}
-    </List>
+    <>
+      <GoBack>
+        <Link to="/">Voltar</Link>
+      </GoBack>
+      <List>
+        {jobs.map(job => (
+          <li
+            key={job.id}
+            style={{
+              backgroundImage: `url(http://localhost:3333/files/${job.images[0].path})`,
+            }}
+          >
+            <Link to={`/jobs/${job.id}`}>{job.title}</Link>
+          </li>
+        ))}
+      </List>
+    </>
   );
 }

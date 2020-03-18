@@ -22,8 +22,9 @@ export default createGlobalStyle`
 
   body, input, button {
     color: #000;
-    font-size: 14px;
-    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: 'Caveat', cursive; */
   }
 
   button {
